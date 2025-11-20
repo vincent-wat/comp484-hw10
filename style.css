@@ -64,19 +64,21 @@
   }
   
   .button-container {
-    margin-top:20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
   }
   
   .button-container button {
     width: 100px;
-      margin-right: 10px;
-      text-align: center;
-      display: inline-block;
-      float: left;
-    font-size:15px;
+    margin-right: 0;
+    text-align: center;
+    font-size: 15px;
     background-color: #1e2835;
     border-color: #404853;
-    cursor:pointer;
-    background-image: linear-gradient(to bottom,rgba(246,246,246,.1)0%,rgba(30,40,53,0)66%);
+    cursor: pointer;
+    background-image: linear-gradient(to bottom, rgba(246,246,246,.1) 0%, rgba(30,40,53,0) 66%);
     color: #fafafa;
+    float: none;
   }
+  
