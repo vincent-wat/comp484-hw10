@@ -8,6 +8,9 @@ $(function () {
   var $comment = $(".pet-comment");
   var $img = $(".pet-image");
 
+// Jquery Method #1: .wrap()
+// Simply wraps the image with the div tags provided
+
   $img.wrap('<div class="pet-frame"></div>');
 
   function limit(n) { return Math.max(0, n); }
@@ -85,6 +88,10 @@ $(function () {
   });
 
   var $buttons = $('.button-container button');
+
+  // Jquery Method #2: .each()
+  // This method is being used to iterate through EACH button on the page.
+  // In doing so, EVERY button will be rendered the same way.
 
   $buttons.each(function(){
     var $b = $(this);
