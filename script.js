@@ -1,6 +1,5 @@
 $(function () {
-  // Main Object
-  var pet_info = { name: "Mochi", weight: 10, happiness: 5, energy: 5 };
+  var pet_info = { name: "Pikachu", weight: 10, happiness: 5, energy: 5 };
 
   var $name = $(".name");
   var $weight = $(".weight");
@@ -9,7 +8,8 @@ $(function () {
   var $comment = $(".pet-comment");
   var $img = $(".pet-image");
 
-  // Helper function that's going to be used to stop stats from going below zero
+  $img.wrap('<div class="pet-frame"></div>');
+
   function limit(n) { return Math.max(0, n); }
 
   function sync() {
@@ -20,21 +20,17 @@ $(function () {
   }
 
   function speak(msg) {
-    // jQuery unique method #1: .delay()
-    // Keeps the message up for a little bit before disappearing
     $comment.stop(true, true)
       .text(msg).slideDown(120).delay(1200).slideUp(160);
   }
 
   function bounce() {
-    // image animation
     $img.stop(true, true)
       .animate({ scale: 1.06 }, { duration: 120, step: function (now) { $(this).css('transform', 'scale(' + now + ')'); } })
       .animate({ scale: 1.00 }, { duration: 120, step: function (now) { $(this).css('transform', 'scale(' + now + ')'); } });
   }
 
   function checkPetInfo() {
-    // bug-fix to stop negative numbers in the stats
     pet_info.weight = limit(pet_info.weight);
     pet_info.happiness = limit(pet_info.happiness);
     pet_info.energy = limit(pet_info.energy);
@@ -45,7 +41,6 @@ $(function () {
     sync();
   }
 
-  // actions
   function clickedTreatButton() {
     pet_info.happiness += 1;
     pet_info.weight += 1;
@@ -74,7 +69,6 @@ $(function () {
   function clickedNapButton() {
     pet_info.happiness += 1;
     pet_info.energy += 2;
-    pet_info.weight -= 1;
     updateInfo();
     speak("Zzz…");
   }
@@ -84,14 +78,22 @@ $(function () {
   $('.exercise-button').click(clickedExerciseButton);
   $('.nap-button').click(clickedNapButton);
 
-  // jQuery unique method #2: .one('load', ...)
-  // ensures that this intro message is only ran once
   $img.one('load', function () {
     speak("Hi! I'm your new pet.");
   }).each(function () {
     if (this.complete) $(this).trigger('load');
   });
 
-  // Shows the info right off the bat.
+  var $buttons = $('.button-container button');
+
+  $buttons.each(function(){
+    var $b = $(this);
+    var label = $b.text().trim();
+    var icon = $b.data('icon');
+    $b.empty()
+      .append($('<img>', { class: 'btn-icon', src: icon, alt: '' }))
+      .append($('<span>', { class: 'btn-label', text: label }));
+  });
+
   updateInfo();
 });

@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -17,31 +16,28 @@
 
     <main>
       <section class="pet-image-container">
-        <img class="pet-image" src="images/pet.png" alt="Your Pet">
+        <img class="pet-image" src="images/petgif.gif" alt="Your Pet">
         <div class="pet-comment" aria-live="polite"></div>
+
+        <div class="button-container">
+          <button class="treat-button" data-icon="images/treat.webp">Treat</button>
+          <button class="play-button" data-icon="images/ball.png">Play</button>
+          <button class="exercise-button" data-icon="images/dumbbell.png">Exercise</button>
+          <button class="nap-button" data-icon="images/bed.png">Nap</button>
+        </div>
       </section>
 
       <section class="dashboard">
         <div>Name: <strong><span class="name"></span></strong></div>
         <div>Weight: <strong><span class="weight"></span> lbs</strong></div>
         <div>Happiness: <strong><span class="happiness"></span> tail wags (per min)</strong></div>
-
-        <!-- new stat -->
         <div>Energy: <strong><span class="energy"></span></strong></div>
-
-        <div class="button-container">
-          <button class="treat-button">Treat</button>
-          <button class="play-button">Play</button>
-          <button class="exercise-button">Exercise</button>
-          
-          <!-- new button -->
-          <button class="nap-button">Nap</button>
-        </div>
       </section>
     </main>
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
+    <script src="script.js"></script>
   </body>
 </html>
